@@ -1,6 +1,6 @@
 
 When(/^I navigate to HLN homepage$/) do
-  visit('http://www.hln.be')
+  visit('http://test10g.hln.be.persgroep.be/hln/nl/1/home/index.dhtml')
 end
 
 And(/^I scroll to the Regio Integration$/) do
