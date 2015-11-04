@@ -18,6 +18,7 @@ Feature: @HLN_Regio integration on HLN
 
   Scenario: User is eligible for step 1
     Given User is logged in
+    And User has gent as favourite city
     When I navigate to HLN homepage
     And I scroll to the Regio Integration
-    Then the city shown should be its favourite city
+    Then the city shown should be Gent
