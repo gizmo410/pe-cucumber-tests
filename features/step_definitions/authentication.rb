@@ -18,7 +18,9 @@ end
 
 And(/^User has (.*) as favourite city$/) do |favouriteCity|
 
-  visit('http://hlnregio.test.persgroep.be/regio/nieuws-uit-'+favouriteCity)
+  resetFavouriteCityToHalle
+
+  visit('http://hlnregio.test.persgroep.be/regio/nieuws-uit-'+favouriteCity.downcase)
 
   find("#favorite-dropdown").click
   within ".modal.modal--favorite" do
@@ -27,4 +29,14 @@ And(/^User has (.*) as favourite city$/) do |favouriteCity|
 
   page.should have_css("button#favorite-dropdown.js-is-active-regioncheck")
 
+end
+
+def resetFavouriteCityToHalle
+  visit('http://hlnregio.test.persgroep.be/regio/nieuws-uit-halle')
+  find("#favorite-dropdown").click
+  within ".modal.modal--favorite" do
+    find(".button.favoritize").click
+  end
+
+  page.should have_css("button#favorite-dropdown.js-is-active-regioncheck")
 end
